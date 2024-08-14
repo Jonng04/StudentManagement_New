@@ -1,0 +1,43 @@
+@model StudentManagement.Models.Class
+@{
+    ViewData["Title"] = "Edit Class";
+}
+<div class="container-fluid">
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0"><a type="button"
+                class="btn btn-dark btn-raised-shadow btn-wave btn-sm me-1" href="/Class"><i
+                    class="fa-solid fa-arrow-left"></i></a> Edit Class
+        </h1>
+    </div>
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Edit Class
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-5">
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="ClassName">Class Name</label>
+                                <input asp-for="ClassName" class="form-control" />
+                                <span asp-validation-for="ClassName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <a type="button" class="btn btn-danger shadow-danger btn-wave" href="/Class"><i
+                                    class="fa fa-fw fa-undo me-1"></i>
+                                Back</a>
+                            <button type="submit" class="btn btn-primary shadow-primary btn-wave"><i
+                                    class="fa fa-fw fa-plus me-1"></i>
+                                Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,71 @@
+@model StudentManagement.Models.Teacher
+@{
+    ViewData["Title"] = "Edit Teacher";
+}
+<div class="container-fluid">
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0"><a type="button"
+                class="btn btn-dark btn-raised-shadow btn-wave btn-sm me-1" href="/Teachers"><i
+                    class="fa-solid fa-arrow-left"></i></a> Edit Teacher
+        </h1>
+    </div>
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Edit Teacher
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-5">
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="TeacherCode">Teacher Code</label>
+                                <input asp-for="TeacherCode" class="form-control" />
+                                <span asp-validation-for="TeacherCode" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="FullName">Full Name</label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="DateOfBirth">Date Of Birth</label>
+                                <input asp-for="DateOfBirth" class="form-control" id="daterange" type="date" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="Email">Email</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="PhoneNumber">Phone Number</label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <label class="form-label" asp-for="Address">Address</label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <a type="button" class="btn btn-danger shadow-danger btn-wave" href="/Teachers"><i
+                                    class="fa fa-fw fa-undo me-1"></i>
+                                Back</a>
+                            <button type="submit" class="btn btn-primary shadow-primary btn-wave"><i
+                                    class="fa fa-fw fa-plus me-1"></i>
+                                Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

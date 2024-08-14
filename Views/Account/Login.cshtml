@@ -1,0 +1,236 @@
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light"
+    data-menu-styles="dark" data-toggled="close">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/ZHk8tM0.png" />
+    <!-- Choices JS -->
+    <script src="~/css/theme/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="~/css/theme/assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="~/css/theme/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="~/css/theme/assets/css/styles.min.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="~/css/theme/assets/css/icons.css" rel="stylesheet">
+
+    <!-- Node Waves Css -->
+    <link href="~/css/theme/assets/libs/node-waves/waves.min.css" rel="stylesheet">
+
+    <!-- Simplebar Css -->
+    <link href="~/css/theme/assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="~/css/theme/assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="~/css/theme/assets/libs/simonwep/pickr/themes/nano.min.css">
+
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="~/css/theme/assets/libs/prismjs/themes/prism-coy.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="~/css/theme/assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+    <link rel="stylesheet" href="~/css/theme/assets/libs/glightbox/css/glightbox.min.css">
+
+    <!-- Simple Notify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css" />
+    <!-- Simple Notify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+
+    <!-- Sweetalerts CSS -->
+    <link rel="stylesheet" href="~/css/theme/assets/libs/sweetalert2/sweetalert2.min.css">
+    <!-- Sweetalerts JS -->
+    <script src="~/css/theme/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/css/theme/assets/js/sweet-alerts.js"></script>
+
+    <!-- SwiperJS Css -->
+    <link rel="stylesheet" href="~/css/theme/assets/libs/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="~/css/theme/assets/css/styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/css/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
+</head>
+<script>
+    function showMessage(message, type) {
+        const commonOptions = {
+            effect: 'fade',
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: true,
+            autotimeout: 3000,
+            gap: 20,
+            distance: 20,
+            type: 'outline',
+            position: 'right top'
+        };
+
+        const options = {
+            success: {
+                status: 'success',
+                title: 'Success!',
+                text: message,
+            },
+            error: {
+                status: 'error',
+                title: 'Fail!',
+                text: message,
+            }
+        };
+        new Notify(Object.assign({}, commonOptions, options[type]));
+    }
+
+    @if (TempData["Message"] != null && TempData["MessageType"] != null)
+    {
+        <text>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showMessage('@Html.Raw(Json.Serialize(TempData["Message"]))', '@TempData["MessageType"]');
+                                                                                                                                                                    });
+        </text>
+    }
+</script>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center authentication authentication-basic h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+                <div class="my-5 d-flex justify-content-center"> <a href="index.html"> <img
+                            src="../assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
+                        <img src="../assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
+                    </a>
+                </div>
+                <div class="card custom-card">
+                    <div class="card-body p-5">
+                        <p class="h5 fw-semibold mb-2 text-center">Sign In</p>
+                        <p class="mb-4 text-muted op-7 fw-normal text-center">Welcome to Student Management System</p>
+                        <div class="row gy-3">
+                            <form asp-action="Login" method="post">
+                                <div class="col-xl-12">
+                                    <label for="signin-username" class="form-label text-default">User
+                                        Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="Username"
+                                        name="Username" placeholder="User Name">
+                                </div>
+                                <div class="col-xl-12 mb-2"> <label for="signin-password"
+                                        class="form-label text-default d-block">Password
+                                        <a href="reset-password-basic.html" class="float-end text-danger">Forget
+                                            password ?</a></label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" id="Password"
+                                            name="Password" placeholder="Password">
+                                        <button class="btn btn-light" type="button"
+                                            onclick="togglePassword('Password', this)" id="button-addon2">
+                                            <i class="ri-eye-off-line align-middle"></i>
+                                        </button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="form-check"> <input class="form-check-input" type="checkbox"
+                                                value="" id="defaultCheck1"> <label
+                                                class="form-check-label text-muted fw-normal" for="defaultCheck1">
+                                                Remember password ? </label> </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 d-grid mt-2">
+                                    <button type="submit" class="btn btn-lg btn-primary">Sign
+                                        In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/css/theme/assets/libs/popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="~/css/theme/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="~/css/theme/assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="~/css/theme/assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="~/css/theme/assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="~/css/theme/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/css/theme/assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="~/css/theme/assets/libs/simonwep/pickr/pickr.es5.min.js"></script>
+
+    <!-- Custom-Switcher JS -->
+    <script src="~/css/theme/assets/js/custom-switcher.min.js"></script>
+    <!-- Internal Swiper JS -->
+    <script src="~/css/theme/assets/js/swiper.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/css/theme/assets/js/custom.js"></script>
+
+
+    <!-- Prism JS -->
+    <script src="~/css/theme/assets/libs/prismjs/prism.js"></script>
+    <script src="~/css/theme/assets/js/prism-custom.js"></script>
+
+    <!-- Modal JS -->
+    <script src="~/css/theme/assets/js/modal.js"></script>
+
+    <!-- Date & Time Picker JS -->
+    <script src="~/css/theme/assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="~/css/theme/assets/js/date&time_pickers.js"></script>
+
+    <!-- Chartjs Chart JS -->
+    <script src="~/css/theme/assets/libs/chart.js/chart.min.js"></script>
+
+    <!-- Gallery JS -->
+    <script src="~/css/theme/assets/libs/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Choices JS -->
+    <script src="~/css/theme/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="~/css/theme/assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script>
+            "use strict";
+        function togglePassword(inputId, button) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("ri-eye-off-line");
+                icon.classList.add("ri-eye-line");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("ri-eye-line");
+                icon.classList.add("ri-eye-off-line");
+            }
+        }
+    </script>
+</body>
+
+</html>
